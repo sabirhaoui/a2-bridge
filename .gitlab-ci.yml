@@ -1,0 +1,12 @@
+image: python:3.11-slim
+
+stages:
+  - verify
+
+unit-tests:
+  stage: verify
+  variables:
+    PYTHONPATH: src
+  script:
+    - python -m compileall -q src
+    - python -m unittest discover -s tests -v
